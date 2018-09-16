@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    
+  <div>
+    <h2 class="float-left"> Lista de Categorias </h2>
+    <a class="btn btn-warning text-white float-right " style="background-color: #D9851E" routerLink="/categorias/create" (click)="onCreate()">
+      Crear Categoria
+    </a>
+  </div>
+
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr class="bg-dark text-white">
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="" *ngFor="let category of categoryService.categories | paginate: { itemsPerPage: 10, currentPage: p }">
+        <th scope="row">{{category.id}}</th>
+        <th scope="row">
+          {{category.name}}
+          <a class="btn btn-danger text-white float-right ml-3" (click)="onDelete(category.id)" >
+              <i class="far fa-trash-alt"></i>
+          </a>
+
+          <a class="btn btn-secondary text-white float-right ml-3" routerLink="/categorias/create" (click)="onEdit(category)" >
+            <i class="far fa-edit"></i>
+          </a>
+
+          <a class="btn btn-secondary text-white float-right ml-3" routerLink="/categorias/view" (click)="onView(category)" >
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+
+        </th>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+  
+</div>

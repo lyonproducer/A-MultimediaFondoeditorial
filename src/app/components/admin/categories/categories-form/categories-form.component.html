@@ -1,0 +1,36 @@
+<div class="container-fluid mb-5" style="margin-top:5%;">
+    <div class="row mt-5" style="margin-bottom:5%;">
+      <div class="offset-md-3 col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5 *ngIf="!categoryService.editar">Añadir categoria</h5>
+            <h5 *ngIf="categoryService.editar">Editar categoria</h5>
+          </div>
+  
+          <div class="card-body" style="padding:30px">
+  
+            <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+  
+              <input type="hidden" name="id" #id="ngModel" [(ngModel)]="category.id">
+  
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input required [(ngModel)]="category.name" type="text" name="name" #name="ngModel" id="name" placeholder="Nombre de la categoria" class="form-control">
+              </div>
+                
+              <div class="form-group">
+                <label for="body">Descripción</label>
+                <textarea required [(ngModel)]="category.body" type="text" name="body" id="body" class="form-control" placeholder="Descripción de la categoria"></textarea>
+              </div>
+                
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!categoryForm.valid">
+                  Guardar categoria
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

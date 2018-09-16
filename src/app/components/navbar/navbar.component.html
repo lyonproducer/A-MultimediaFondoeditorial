@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-sm navbar-dark" style="background: #0a3677">
+  <div class="container">
+
+    <a class="navbar-brand" routerLink="">
+      <img src="../../../assets/logo/Fondo Editorial Blanco.png" width="40" class="d-inline-block align-top" alt="">
+    </a>
+
+    <a class="navbar-brand" routerLink="">Banco de imagenes</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="categorias" *ngIf="loggedIn">Categorias</a>
+        <a class="nav-item nav-link" routerLink="workdesigns" *ngIf="loggedIn">Diseños</a>
+      </div>
+
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="profile" *ngIf="loggedIn">Profile</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="login" *ngIf="!loggedIn">Login</a>
+            <a class="nav-item nav-link" href="#" (click)="logout($event)" *ngIf="loggedIn">Logout</a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</nav> 

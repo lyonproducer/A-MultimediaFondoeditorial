@@ -1,0 +1,31 @@
+<div class="container mt-4">
+
+  <div class="offset-md-1 col-md-10">
+    <h1 class="mb-2">Lista de Diseños</h1>
+
+    <div class="card mb-5" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 10, currentPage: p }">
+
+      <div class="card-header">
+        <h4>{{workdesign.title}}</h4>
+      </div>
+      <div class="card-body">
+
+        <img src="{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img">
+        <hr>
+        <strong>Descripción</strong>
+        {{workdesign.excerpt}}
+
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary float-right" role="button">Leer Mas</a>
+        <strong>Fecha de publicación:</strong>
+        {{workdesign.publishedDate}}
+        <br>
+        <strong>Categoria: </strong>
+        <a routerLink="workdesign/{{workdesign.category.name}}" (click)="refreshWorkdesignCategoryList(workdesign.category.id)" >{{workdesign.category.name}}</a>
+      </div>
+    </div>
+    
+    <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

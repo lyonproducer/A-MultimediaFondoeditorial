@@ -1,0 +1,102 @@
+<div class="container-fluid mb-5" style="margin-top:5%;">
+    <div class="row mt-5" style="margin-bottom:5%;">
+      <div class="offset-md-4 col-md-8">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5 *ngIf="!workdesignService.editar">Añadir Diseño</h5>
+            <h5 *ngIf="workdesignService.editar">Editar Diseño</h5>
+          </div>
+  
+          <div class="card-body" style="padding:30px">
+  
+            <form #workdesignForm="ngForm" (ngSubmit)="onSubmit(workdesignForm)">
+  
+              <input type="hidden" name="id" #id="ngModel" 
+              [(ngModel)]="workdesign.id">
+
+              <input type="hidden" name="user_id" #user_id="ngModel" 
+              [(ngModel)]="workdesign.user_id">
+
+              <input type="hidden" name="category_id" #category_id="ngModel" 
+              [(ngModel)]="workdesign.category_id">
+
+              <div class="form-group">
+                <label for="title">Titulo</label>
+                <input required [(ngModel)]="workdesign.title" type="text" name="title" #name="ngModel" id="title" placeholder="Titulo del diseño" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Selecciona la categoria</label>
+                  <select class="form-control"  id="exampleFormControlSelect1" 
+                  (change)="asignCategoryID($event.target.value)" 
+                  *ngIf="workdesignService.editar" [value]="workdesign.category.name">
+                    <option *ngFor="let category of categoryService.categories">
+                      {{category.name}}
+                    </option>
+                  </select>
+                  <select class="form-control"  id="exampleFormControlSelect1" 
+                  (change)="asignCategoryID($event.target.value)" 
+                  *ngIf="!workdesignService.editar">
+                    <option *ngFor="let category of categoryService.categories">
+                      {{category.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="type">Dependencia</label>
+                <input required [(ngModel)]="workdesign.dependency" type="text" name="dependency" #name="ngModel" id="dependency" placeholder="Dependencia del diseño" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="excerpt">Extracto</label>
+                <textarea required [(ngModel)]="workdesign.excerpt" type="text" name="excerpt" id="excerpt" class="form-control" placeholder="Extracto del diseño"></textarea>
+              </div>
+                
+              <div class="form-group">
+                <label for="body">Descripción</label>
+                <textarea required [(ngModel)]="workdesign.description" type="text" name="description" id="description" class="form-control" placeholder="Descripción del diseño"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="type">Estado</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      <input type="radio" name="status" value="Finalizado" 
+                      [(ngModel)]="workdesign.status"> Finalizado
+                      <input class="ml-2" type="radio" name="status" value="En proceso" 
+                      [(ngModel)]="workdesign.status"> En Proceso<br>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Fecha</label><br>
+                <div class="input-group-text">
+                  <input required class="ml-2" type="date" name="publishedDate" 
+                  [(ngModel)]="workdesign.publishedDate" [value]="workdesign.publishedDate">
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="type">Subir Imagen</label>
+                <div class="input-group-text">
+                    <input type="file" name="file" accept="image/*" 
+                    (change)=onFileSelected($event)>
+                </div>
+              </div>
+
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!workdesignForm.valid">
+                  Guardar Diseño
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
