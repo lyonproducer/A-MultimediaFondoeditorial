@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/admin/user/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +24,8 @@ export class SignUpComponent implements OnInit {
   constructor(private loginService:LoginService,
               private token: TokenService,
               private router: Router,
-              private auth: AuthService 
+              private auth: AuthService,
+              private userService: UserService  
             ) {  }
 
   ngOnInit() {
@@ -39,12 +41,20 @@ export class SignUpComponent implements OnInit {
   handleResponse(data){
     this.token.handle(data.access_token);
     this.auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/profile'); 
+    this.router.navigateByUrl('/profile');
+    this.userService.user = data.user;
+    this.handleUser(data.user); 
   }
 
   handleError(error){
     this.error = error.error.errors;
 
+  }
+
+  handleUser(user){
+    
+    let data:any = JSON.stringify(user);
+    localStorage.setItem('userFondoedit',data)
   }
 
 }

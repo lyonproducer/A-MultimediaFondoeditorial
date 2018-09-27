@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkdesignService } from '../../../../services/admin/workdesign/workdesign.service';
 import { Workdesign } from '../../../../Models/Workdesign';
 import { SnotifyService } from 'ng-snotify';
-import { CategoryService } from '../../../../services/admin/Category/category.service';
+import { CategoryService } from '../../../../services/admin/category/category.service';
 import { Category } from '../../../../Models/Category';
 
 @Component({

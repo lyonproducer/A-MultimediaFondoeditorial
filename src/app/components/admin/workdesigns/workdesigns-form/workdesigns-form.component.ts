@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkdesignService } from '../../../../services/admin/workdesign/workdesign.service';
 import { Workdesign } from '../../../../Models/Workdesign';
-import { CategoryService } from '../../../../services/admin/Category/category.service';
+import { CategoryService } from '../../../../services/admin/category/category.service';
 import { Category } from '../../../../Models/Category';
 import { UserService } from '../../../../services/admin/user/user.service';
 import { NgForm } from '@angular/forms';
@@ -47,7 +47,10 @@ export class WorkdesignsFormComponent implements OnInit {
     }else {
       console.log('datos nuevos toca crear');
       this.refreshCategoryList();
-      this.workdesign.user_id = Number(localStorage.getItem('user_id'));
+      let data = localStorage.getItem('userFondoedit');
+      data = JSON.parse(data);
+      //console.log(data);
+      this.workdesign.user_id = Number(data['id']);
     }
   }
 
@@ -98,7 +101,8 @@ export class WorkdesignsFormComponent implements OnInit {
       this.workdesignService.postWorkdesign(form.value).subscribe((res) => {
         this.router.navigateByUrl('/workdesigns');
         this.notify.success("Diseño añadido correctamente",{timeout:0});
-        this.onUpload(form.value.id);
+        console.log(res);
+        this.onUpload(0);
         this.resetForm(form);
       });
     }

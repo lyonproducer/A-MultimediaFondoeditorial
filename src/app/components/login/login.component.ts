@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
   }
 
   handleUser(user){
-    localStorage.setItem('user_name',user.name);
-    localStorage.setItem('user_id',user.id);
-    localStorage.setItem('user_email',user.email);
+
+    let data:any = JSON.stringify(user);
+    localStorage.setItem('userFondoedit',data);
   }
 
 }
