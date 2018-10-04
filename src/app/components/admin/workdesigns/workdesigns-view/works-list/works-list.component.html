@@ -1,0 +1,35 @@
+<div class="card border-secondary mb-4">
+  <div class="card-header">
+    <h5 class="float-left mb-0">Lista de Complementos</h5>
+    <button *ngIf="!open" class="btn btn-secondary float-right" (click)="openComponent()">Ver</button>
+    <button *ngIf="open" class="btn btn-secondary float-right" (click)="openComponent()">Cerrar</button>
+  </div>
+
+  <div class="card-body" *ngIf="open">
+
+    <p *ngIf="workService.works.length==0"> No hay complementos</p>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let work of workService.works">
+        {{work.title}}
+        
+        <a class="btn btn-danger text-white float-right ml-3" (click)="onDelete(work.id)">
+          <i class="far fa-trash-alt"></i>
+        </a>
+
+        <!--
+        <a class="btn btn-secondary text-white float-right ml-3" routerLink="/works/create" (click)="onEdit(work)">
+          <i class="far fa-edit"></i>
+        </a>
+        -->
+
+        <a class="btn btn-secondary text-white float-right ml-3" (click)="openWorkViewDialog(work)">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
+
+      </li>
+
+    </ul>
+  </div>
+
+</div>

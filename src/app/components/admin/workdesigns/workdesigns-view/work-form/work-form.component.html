@@ -1,0 +1,71 @@
+<h3 mat-dialog-title class="text-center">Agregar nuevo Complemento</h3>
+
+<hr class="mt-2">
+
+<mat-dialog-content>
+
+  <form #workForm="ngForm" (ngSubmit)="onSubmit(workForm)">
+
+    <input *ngIf="editar" type="hidden" name="id" #id="ngModel" [(ngModel)]="work.id">
+
+    <input type="hidden" name="work_design_id" #id="ngModel" [(ngModel)]="work.work_design_id">
+
+    <div class="form-group">
+      <label for="title">Titulo</label>
+      <input required [(ngModel)]="work.name" type="text" name="title" #name="ngModel" id="title" placeholder="Titulo del complemento"
+        class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="body">Descripción</label>
+      <textarea required [(ngModel)]="work.description" type="text" name="description" id="body" class="form-control"
+        placeholder="Descripción del complemento"></textarea>
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" required [(ngModel)]="work.type" name="type">
+              <option selected>Logo</option>
+              <option>Fondo</option>
+              <option>Adorno</option>
+              <option>Pincel</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" 
+              (change)=onFileSelected($event) id="inputGroupFile02">
+              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Escoge
+                Imagen</label>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text" id="inputGroupFileAddon02">Subir</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!workForm.valid">
+        Guardar Complemento
+      </button>
+    </div>
+
+  </form>
+
+</mat-dialog-content>

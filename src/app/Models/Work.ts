@@ -5,6 +5,6 @@ export interface Work {
     title: string,
     description: string,
     type: string,
-    file:string
+    file:File
 
 }

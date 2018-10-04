@@ -42,6 +42,9 @@
     </tbody>
   </table>
 
-  <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls previousLabel="Anterior"
+  nextLabel="Siguiente" autoHide="true"
+  class="text-center" 
+  (pageChange)="p = $event"></pagination-controls>
   
 </div>

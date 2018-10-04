@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {ModalModule} from "ngx-modal";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule, MatDialogRef} from '@angular/material';
 
 //Services
 import { BeforeLoginService } from './services/before-login.service';
@@ -23,9 +26,14 @@ import { CategoriesComponent } from './components/admin/categories/categories-li
 import { CategoriesViewComponent } from './components/admin/categories/categories-view/categories-view.component';
 import { CategoriesFormComponent } from './components/admin/categories/categories-form/categories-form.component';
 import { WorkdesignListComponent } from './components/home/workdesign-list/workdesign-list.component';
+
 import { WorkdesignsTableComponent } from './components/admin/workdesigns/workdesigns-table/workdesigns-table.component';
 import { WorkdesignsFormComponent } from './components/admin/workdesigns/workdesigns-form/workdesigns-form.component';
 import { WorkdesignsViewComponent } from './components/admin/workdesigns/workdesigns-view/workdesigns-view.component';
+import { WorksListComponent } from './components/admin/workdesigns/workdesigns-view/works-list/works-list.component';
+import { WorkFormComponent } from './components/admin/workdesigns/workdesigns-view/work-form/work-form.component';
+import { WorkViewComponent } from './components/admin/workdesigns/workdesigns-view/work-view/work-view.component';
+import { VariablesComponent } from './global/variables/variables.component';
 
 
 const routes: Route[] = [
@@ -50,6 +58,10 @@ const routes: Route[] = [
 ];
 
 @NgModule({
+  entryComponents:[
+    WorkFormComponent,
+    WorkViewComponent
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -64,7 +76,11 @@ const routes: Route[] = [
     WorkdesignListComponent,
     WorkdesignsTableComponent,
     WorkdesignsFormComponent,
-    WorkdesignsViewComponent
+    WorkdesignsViewComponent,
+    WorksListComponent,
+    WorkFormComponent,
+    WorkViewComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -72,12 +88,16 @@ const routes: Route[] = [
     FormsModule,
     HttpClientModule,
     SnotifyModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    {provide: MatDialogRef, useValue: {}},
     SnotifyService,
-    Title
+    Title,
+    VariablesComponent
   ],
   bootstrap: [AppComponent]
 })

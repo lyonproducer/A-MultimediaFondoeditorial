@@ -1,0 +1,23 @@
+<h2 mat-dialog-title class="text-center">{{work.title}}</h2>
+
+<hr class="mt-2">
+
+<mat-dialog-content>
+
+  <img src="{{variable.urlBase}}/{{work.file}}" *ngIf="work.file" class="img-fluid card-img-top">
+
+  <div class="row mt-4">
+    <div class="col">
+      <strong>Tipo: </strong>
+      {{work.type}}
+    </div>
+    <div class="col-8">
+
+      <strong>Descripción: </strong>
+      {{work.description}}
+
+      <a href="{{variable.urlApi}}/workDownload/{{work.id}}" class="btn btn-success float-right">Descarga</a>
+    </div>
+  </div>
+
+</mat-dialog-content>

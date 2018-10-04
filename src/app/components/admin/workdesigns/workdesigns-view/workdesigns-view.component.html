@@ -1,93 +1,52 @@
 <div class="container" style="margin-top:5%">
 
-    <div class="offset-md-1 col-md-10">
-  
-      <div class="card border-secondary mb-4">
+  <div class="offset-md-1 col-md-10">
 
-        <img src="{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img-top">
-        
-        <div class="card-body">
+    <div class="card border-secondary mb-4">
 
-          <h4 class="card-title">{{workdesign.title}}</h4>
-          <hr>
-          
-          <div class="row">
-            <div class="col">
-              <strong>Dependencia: </strong><br>
-              {{workdesign.dependency}}<br><br>
-              <strong>Estatus Actual: </strong><br>
-              {{workdesign.status}}<br>
-            </div>
-            <div class="col-8">
-              <strong>Descripción: </strong>
-              {{workdesign.description}}
-            </div>
+      <img src="{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img-top">
+
+      <div class="card-body">
+
+        <h4 class="card-title">{{workdesign.title}}</h4>
+        <hr>
+
+        <div class="row">
+          <div class="col">
+            <strong>Dependencia: </strong><br>
+            {{workdesign.dependency}}<br><br>
+            <strong>Estatus Actual: </strong><br>
+            {{workdesign.status}}<br>
+          </div>
+          <div class="col-8">
+            <strong>Descripción: </strong>
+            {{workdesign.description}}
           </div>
         </div>
-
-        <div class="card-footer">
-          <strong>Fecha de publicación:</strong>
-          {{workdesign.publishedDate}}
-          <br>
-          <strong>Categoria: </strong>
-
-          <a routerLink="workdesign/{{workdesign.categoryName}}" (click)="refreshWorkdesignCategoryList(workdesign.category_id)">{{workdesign.category.name}}</a>
-
-        </div>
       </div>
 
-      <h4 class="mt-3">Complementos del diseño</h4>
-      <hr>
+      <div class="card-footer">
+        <strong>Fecha de publicación:</strong>
+        {{workdesign.publishedDate}}
+        <br>
+        <strong>Categoria: </strong>
 
-      <div class="card border-secondary mb-4">
-        <div class="card-header">
-          <h4 class="float-left mb-0">Nuevo Complemento</h4>
-          <button class="btn btn-secondary float-right" (click)="openComponent()">Añadir</button>
-        </div>
+        <a routerLink="workdesign/{{workdesign.categoryName}}" (click)="refreshWorkdesignCategoryList(workdesign.category_id)">{{workdesign.category.name}}</a>
 
-        <div class="card-body" *ngIf="open">
-
-          <form #workForm="ngForm" (ngSubmit)="onSubmit(workForm)">
-
-              <div class="form-group">
-                <label for="title">Titulo</label>
-                <input required [(ngModel)]="category.name" type="text" name="title" #name="ngModel" id="title" placeholder="Titulo del complemento" class="form-control">
-              </div>
-                
-              <div class="form-group">
-                <label for="body">Descripción</label>
-                <textarea required [(ngModel)]="category.body" type="text" name="body" id="body" class="form-control" placeholder="Descripción del complemento"></textarea>
-              </div>
-    
-              <div class="form-group">
-                <label for="type">Tipo</label>
-                <textarea required [(ngModel)]="category.body" type="text" name="type" id="type" class="form-control" placeholder="Tipo de complemento"></textarea>
-              </div>
-
-            <div class="form-group">
-              <label for="uploadLabel">Subir imagen</label>
-              <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile02">
-                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Escoge Imagen</label>
-                </div>
-                <div class="input-group-append">
-                  <span class="input-group-text" id="inputGroupFileAddon02">Subir</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group text-center">
-              <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!workForm.valid">
-                Guardar Complemento
-              </button>
-            </div>
-
-          </form>
-        </div>
       </div>
-
-
-
     </div>
+
+    <h3 class="mt-3" *ngIf="loggedIn">Complementos del diseño</h3>
+    <hr *ngIf="loggedIn">
+
+    <div class="card border-secondary mb-4">
+      <div class="card-header">
+        <h5 class="float-left mb-0">Nuevo Complemento</h5>
+        <button class="btn btn-secondary float-right" (click)="openWorkFormDialog()">Añadir</button>
+      </div>
+    </div>
+
+    <app-works-list *ngIf="loggedIn"></app-works-list>
+
   </div>
+</div>

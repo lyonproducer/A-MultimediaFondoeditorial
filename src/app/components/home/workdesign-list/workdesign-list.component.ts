@@ -32,5 +32,8 @@ export class WorkdesignListComponent implements OnInit {
     });
   }
 
+  onView(workdesign:Workdesign){
+    this.workdesignService.selectedWorkdesign = workdesign;
+  }
 
 }

@@ -86,11 +86,12 @@ export class WorkdesignsFormComponent implements OnInit {
     }
   }
 
-  onUpload(id?:number){
+  onUploadPhoto(id?:number){
     this.workdesignService.postFile(this.foto,id).subscribe(
       data => {
         console.log(data);
         this.notify.success("Imagen cargada sin problemas",{timeout:0});
+        this.router.navigateByUrl('/workdesigns');
     });    
   }
 
@@ -99,19 +100,24 @@ export class WorkdesignsFormComponent implements OnInit {
     if (form.value.id == null) {
       //console.log(form.value);
       this.workdesignService.postWorkdesign(form.value).subscribe((res) => {
-        this.router.navigateByUrl('/workdesigns');
         this.notify.success("Diseño añadido correctamente",{timeout:0});
         console.log(res);
-        this.onUpload(0);
         this.resetForm(form);
+        if(this.foto){
+          this.onUploadPhoto(0);
+        }else
+        this.router.navigateByUrl('/workdesigns');
       });
     }
     else {
       this.workdesignService.putWorkdesign(form.value).subscribe((res) => {
-        this.router.navigateByUrl('/workdesigns');
-        this.notify.success("Categoria actualizada Correctamente",{timeout:0});
-        this.onUpload(form.value.id);
+        this.notify.success("Diseño actualizada Correctamente",{timeout:0});
+        this.onUploadPhoto(form.value.id);
         this.resetForm(form);
+        if(this.foto){
+          this.onUploadPhoto(0);
+        }else
+        this.router.navigateByUrl('/workdesigns');
       });
     }
   }
