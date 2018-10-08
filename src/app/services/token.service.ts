@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { decode } from '@angular/router/src/url_tree';
+import { VariablesComponent } from '../global/variables/variables.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ export class TokenService {
 
   private iss = {
 
-    login : 'http://localhost:8000/api/login',
-    signup : 'http://localhost:8000/api/signup'
+    login : this.variable.urlApi + '/login',
+    signup : this.variable.urlApi + '/signup'
   };
 
-  constructor() { }
+  constructor(private variable:VariablesComponent) { }
 
   handle(token){
     this.set(token);
@@ -29,9 +30,7 @@ export class TokenService {
 
   remove(){
     localStorage.removeItem('token');
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('user_email');
-    localStorage.removeItem('user_name');
+    localStorage.removeItem('userFondoedit');
   }
 
   isValid(){

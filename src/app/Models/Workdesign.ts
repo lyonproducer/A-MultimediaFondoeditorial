@@ -9,4 +9,5 @@ export interface Workdesign {
     file: string;
     publishedDate: string;
     status: string;
+    uploadBy: string;
 }

@@ -26,6 +26,6 @@ export class WorkService {
   }
 
   deleteWork(id:number){
-    return this.http.delete('http://127.0.0.1:8000/api/work/' + id);
+    return this.http.delete(this.variable.urlApi + '/work/' + id);
   }
 }

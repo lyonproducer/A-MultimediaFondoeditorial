@@ -31,6 +31,7 @@ export class WorkdesignsFormComponent implements OnInit {
     file: null,
     publishedDate: null,
     status: null,
+    uploadBy: null,
   }
 
   constructor(private workdesignService:WorkdesignService, 
@@ -99,7 +100,13 @@ export class WorkdesignsFormComponent implements OnInit {
     
     if (form.value.id == null) {
       //console.log(form.value);
-      this.workdesignService.postWorkdesign(form.value).subscribe((res) => {
+      
+      let data:any = JSON.parse(localStorage.getItem('userFondoedit'));
+      console.log(data);
+      this.workdesign.uploadBy = data.name;
+      console.log(this.workdesign);
+      
+      this.workdesignService.postWorkdesign(this.workdesign).subscribe((res) => {
         this.notify.success("Diseño añadido correctamente",{timeout:0});
         console.log(res);
         this.resetForm(form);
@@ -108,6 +115,7 @@ export class WorkdesignsFormComponent implements OnInit {
         }else
         this.router.navigateByUrl('/workdesigns');
       });
+      
     }
     else {
       this.workdesignService.putWorkdesign(form.value).subscribe((res) => {
