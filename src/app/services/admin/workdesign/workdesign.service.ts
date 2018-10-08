@@ -45,7 +45,8 @@ export class WorkdesignService {
     return this.http.get(this.variable.urlApi + '/workdesignCategory' + `/${id}`);
   }
 
-  postFile(foto, id?:number){
+  postFile(foto, id:number){
+    //console.log("mando servicio foto id", id);
     return this.http.post(this.variable.urlApi + '/workdesignsFile' + `/${id}`, foto);
   }
 

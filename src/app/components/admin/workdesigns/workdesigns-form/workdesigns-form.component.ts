@@ -42,16 +42,24 @@ export class WorkdesignsFormComponent implements OnInit {
               private http:HttpClient) { }
 
   ngOnInit() {
+
+    this.validateDate();
+
     if(this.workdesignService.editar){
+
+      console.log("toca update");
       this.workdesign = this.workdesignService.selectedWorkdesign;
       console.log('tiene datos toca update',this.workdesign); 
+
     }else {
+
       console.log('datos nuevos toca crear');
       this.refreshCategoryList();
       let data = localStorage.getItem('userFondoedit');
       data = JSON.parse(data);
       //console.log(data);
       this.workdesign.user_id = Number(data['id']);
+
     }
   }
 
@@ -87,7 +95,7 @@ export class WorkdesignsFormComponent implements OnInit {
     }
   }
 
-  onUploadPhoto(id?:number){
+  onUploadPhoto(id:number){
     this.workdesignService.postFile(this.foto,id).subscribe(
       data => {
         console.log(data);
@@ -102,14 +110,15 @@ export class WorkdesignsFormComponent implements OnInit {
       //console.log(form.value);
       
       let data:any = JSON.parse(localStorage.getItem('userFondoedit'));
-      console.log(data);
+      //console.log(data);
       this.workdesign.uploadBy = data.name;
-      console.log(this.workdesign);
+      //console.log(this.workdesign);
       
       this.workdesignService.postWorkdesign(this.workdesign).subscribe((res) => {
         this.notify.success("Diseño añadido correctamente",{timeout:0});
         console.log(res);
         this.resetForm(form);
+
         if(this.foto){
           this.onUploadPhoto(0);
         }else
@@ -118,15 +127,39 @@ export class WorkdesignsFormComponent implements OnInit {
       
     }
     else {
+
+      //console.log("editado ", form.value);
+
       this.workdesignService.putWorkdesign(form.value).subscribe((res) => {
         this.notify.success("Diseño actualizada Correctamente",{timeout:0});
-        this.onUploadPhoto(form.value.id);
-        this.resetForm(form);
+
         if(this.foto){
-          this.onUploadPhoto(0);
+          this.onUploadPhoto(form.value.id);
         }else
         this.router.navigateByUrl('/workdesigns');
+        this.resetForm(form);
       });
     }
+  }
+
+  validateDate(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    var dia = String(today.getDate());
+    var mes = String(today.getMonth()+1); //January is 0!
+
+    if(dd<10){
+      dia='0'+dd;
+    } 
+    if(mm<10){
+      mes='0'+mm;
+    } 
+
+    let now = yyyy+'-'+mes+'-'+dia;
+    console.log(now);
+    document.getElementById("datefield").setAttribute("max", now);
   }
 }
