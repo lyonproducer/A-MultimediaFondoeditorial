@@ -33,7 +33,8 @@
         <br>
         <strong>Categoria: </strong>
 
-        <a routerLink="workdesign/{{workdesign.categoryName}}" (click)="refreshWorkdesignCategoryList(workdesign.category_id)">{{workdesign.category.name}}</a>
+        <a style="cursor:pointer;text-decoration: underline black;" 
+        (click)="refreshWorkdesignCategoryList(workdesign.category.id,workdesign.category.name)">{{workdesign.category.name}}</a>
 
       </div>
     </div>

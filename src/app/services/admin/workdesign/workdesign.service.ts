@@ -40,9 +40,27 @@ export class WorkdesignService {
     return this.http.delete(this.variable.urlApi + '/workdesigns' + `/${id}`);
   }
 
+  //Busqueda de posts indivudual
+
   //post por categorias
-  getWorkdesignsByCategoryList(id: number){
-    return this.http.get(this.variable.urlApi + '/workdesignCategory' + `/${id}`);
+  getWorkdesignsByCategoryList(categoryID: number){
+    return this.http.get(this.variable.urlApi + '/workdesignCategory' + `/${categoryID}`);
+  }
+
+  getWorkdesignsByUserList(userID: number){
+    return this.http.get(this.variable.urlApi + '/workdesignUsers' + `/${userID}`);
+  }
+
+  getWorkdesignsByTitleList(title: string){
+    return this.http.get<Workdesign[]>(this.variable.urlApi + '/workdesignTitle' + `/${title}`);
+  }
+
+  getWorkdesignsByDependencyList(dependency: string){
+    return this.http.get<Workdesign[]>(this.variable.urlApi + '/workdesignDependency' + `/${dependency}`);
+  }
+
+  getWorkdesignsByStatusList(status: string){
+    return this.http.get<Workdesign[]>(this.variable.urlApi + '/workdesignStatus' + `/${status}`);
   }
 
   postFile(foto, id:number){

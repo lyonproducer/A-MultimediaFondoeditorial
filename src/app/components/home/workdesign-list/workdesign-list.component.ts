@@ -3,6 +3,7 @@ import { WorkdesignService } from '../../../services/admin/workdesign/workdesign
 import { Workdesign } from '../../../Models/Workdesign';
 import { CategoryService } from '../../../services/admin/category/category.service';
 import { Category } from '../../../Models/Category';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workdesign-list',
@@ -13,7 +14,8 @@ export class WorkdesignListComponent implements OnInit {
 
   categories : Category[]
   constructor(private workdesignService: WorkdesignService,
-              private categoryService:CategoryService) { }
+              private categoryService:CategoryService,
+              private router:Router) { }
 
   ngOnInit() {
     this.refreshWorkdesignList();
@@ -26,9 +28,10 @@ export class WorkdesignListComponent implements OnInit {
     });
   }
 
-  refreshWorkdesignCategoryList(id:number) {
+  refreshWorkdesignCategoryList(id:number, name:string) {
     this.workdesignService.getWorkdesignsByCategoryList(id).subscribe((res) => {
       this.workdesignService.workdesigns = res as Workdesign[];
+      console.log(this.workdesignService.workdesigns);
     });
   }
 

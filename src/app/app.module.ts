@@ -9,6 +9,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {ModalModule} from "ngx-modal";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule, MatDialogRef} from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Services
 import { BeforeLoginService } from './services/before-login.service';
@@ -34,6 +35,8 @@ import { WorksListComponent } from './components/admin/workdesigns/workdesigns-v
 import { WorkFormComponent } from './components/admin/workdesigns/workdesigns-view/work-form/work-form.component';
 import { WorkViewComponent } from './components/admin/workdesigns/workdesigns-view/work-view/work-view.component';
 import { VariablesComponent } from './global/variables/variables.component';
+import { WorkdesignsSearchComponent } from './components/admin/workdesigns/workdesigns-search/workdesigns-search.component';
+import { DropdownDirective } from './directives/dropdown.directive';
 
 
 const routes: Route[] = [
@@ -49,7 +52,6 @@ const routes: Route[] = [
   {path: 'categorias/create', component: CategoriesFormComponent, canActivate:[AfterLoginService]},
   //Home options
   {path: '', component: WorkdesignListComponent},
-  {path: 'workdesign/:category', component: WorkdesignListComponent},
   //Diseños Routes
   {path: 'workdesigns', component: WorkdesignsTableComponent, canActivate:[AfterLoginService]},
   {path: 'workdesigns/view/:id/:title', component: WorkdesignsViewComponent, canActivate:[AfterLoginService]},
@@ -80,6 +82,8 @@ const routes: Route[] = [
     WorksListComponent,
     WorkFormComponent,
     WorkViewComponent,
+    WorkdesignsSearchComponent,
+    DropdownDirective,
     
   ],
   imports: [
@@ -90,7 +94,8 @@ const routes: Route[] = [
     SnotifyModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule.forRoot()
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

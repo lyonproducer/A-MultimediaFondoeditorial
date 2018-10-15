@@ -1,7 +1,16 @@
+<app-workdesigns-search></app-workdesigns-search>
+
+
 <div class="container mt-4">
 
   <div class="offset-md-1 col-md-10">
-    <h1 class="mb-2">Lista de Diseños</h1>
+
+    <h1 class="mt-5 mb-2">Lista de Diseños</h1>
+
+
+    <div class="card" *ngIf="this.workdesignService.workdesigns==null">
+      <p>No hay post</p>
+    </div>
 
     <div class="card mb-5" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 10, currentPage: p }">
 
@@ -18,20 +27,19 @@
       </div>
       <div class="card-footer">
 
-        <a routerLink="/workdesigns/view/{{workdesign.id}}/{{workdesign.title}}" (click)="onView(workdesign)"  class="btn btn-primary float-right" role="button">Ver Más</a>
-        
+        <a routerLink="/workdesigns/view/{{workdesign.id}}/{{workdesign.title}}" (click)="onView(workdesign)" class="btn btn-primary float-right"
+          role="button">Ver Más</a>
+
         <strong>Fecha de publicación:</strong>
         {{workdesign.publishedDate}}
         <br>
         <strong>Categoria: </strong>
-        <a routerLink="workdesign/{{workdesign.category.name}}" (click)="refreshWorkdesignCategoryList(workdesign.category.id)" >{{workdesign.category.name}}</a>
+        <a style="cursor:pointer;text-decoration: underline black;" 
+        (click)="refreshWorkdesignCategoryList(workdesign.category.id,workdesign.category.name)">{{workdesign.category.name}}</a>
       </div>
     </div>
-    
-    <pagination-controls class="text-center" 
-    (pageChange)="p = $event"
-    previousLabel="Anterior"
-    nextLabel="Siguiente"
-    autoHide="true"></pagination-controls>
+
+    <pagination-controls class="text-center" (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"
+      autoHide="true"></pagination-controls>
   </div>
 </div>

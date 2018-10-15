@@ -4,7 +4,9 @@
 
 <mat-dialog-content>
 
-  <img src="{{variable.urlBase}}/{{work.file}}" *ngIf="work.file" class="img-fluid card-img-top">
+  <img style="border-radius: calc(.25rem - 1px);" src="{{variable.urlBase}}/{{work.file}}" *ngIf="work.file" class="img-fluid card-img-top">
+
+  <hr>
 
   <div class="row mt-4">
     <div class="col">

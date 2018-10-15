@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <p class="nav-link mb-0">
+          Filtrar diseños:
+        </p>
+
+        <li class="nav-item dropdown" appDropdown>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a *ngFor="let user of users" class="dropdown-item" style="cursor:pointer;"
+            (click)="refreshWorkdesignUsersList(user.id)">{{user.name}}</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown" appDropdown>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Fechas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item dropdown" appDropdown>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dependencia
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="getWorkdesignsByDependencyList('Interno')" 
+            style="cursor:pointer;">Interno</a>
+            <a class="dropdown-item" (click)="getWorkdesignsByDependencyList('Externo')" 
+            style="cursor:pointer;">Externo</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown" appDropdown>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Estado
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="getWorkdesignsByStatusList('En proceso')"
+            style="cursor:pointer;">En proceso</a>
+            <a class="dropdown-item" (click)="getWorkdesignsByStatusList('Finalizado')"
+            style="cursor:pointer;">Finalizado</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+
+      </ul>
+      <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" class="form-inline my-2 my-lg-0">
+
+        <input required class="form-control mr-sm-2" type="search" placeholder="Busca por titulo" 
+        aria-label="Search" name="title" [(ngModel)]="title">
+        <button [disabled]="!searchForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+
+  </div>
+</nav>
+
