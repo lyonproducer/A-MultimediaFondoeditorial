@@ -1,0 +1,84 @@
+<h3 mat-dialog-title class="text-center">Busqueda avanzada</h3>
+
+<hr class="mt-2">
+
+<mat-dialog-content>
+
+  <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+
+    <div class="form-group">
+      <label for="title">Titulo</label>
+
+      <input required [(ngModel)]="workdesign.title" type="text" name="title" #name="ngModel" id="title" placeholder="Titulo de Diseño" class="form-control">
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Dependencia</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="workdesign.dependency" name="dependency">
+              <option>Interno</option>
+              <option>Externo</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Usuario</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="workdesign.uploadBy" name="uploadBy">
+              <option selected value>Ninguno</option>
+              <option *ngFor="let user of users">{{user.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Status</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" required [(ngModel)]="workdesign.status" name="status">
+              <option>En proceso</option>
+              <option>Finalizado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+
+        <div class="form-group" matTooltip="Seleccione mes y año correspondiente al diseño">
+          <label for="date">Fecha: </label>
+          <input required id="datefield" max="2018-10-18" class="ml-2" type="date" name="publishedDate" 
+            [(ngModel)]="workdesign.publishedDate" [value]="workdesign.publishedDate"
+            >
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
+        Realizar busqueda
+      </button>
+    </div>
+
+  </form>
+
+</mat-dialog-content>

@@ -1,6 +1,5 @@
 <app-workdesigns-search></app-workdesigns-search>
 
-
 <div class="container mt-4">
 
   <div class="offset-md-1 col-md-10">
@@ -9,10 +8,13 @@
 
 
     <div class="card" *ngIf="this.workdesignService.workdesigns==null">
-      <p>No hay post</p>
+      <div class="card-body">
+        <p>No hay post</p>
+      </div>
+      
     </div>
 
-    <div class="card mb-5" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 10, currentPage: p }">
+    <div class="card mb-5" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 5, currentPage: p }">
 
       <div class="card-header">
         <h4>{{workdesign.title}}</h4>
@@ -39,7 +41,6 @@
       </div>
     </div>
 
-    <pagination-controls class="text-center" (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"
-      autoHide="true"></pagination-controls>
+    <pagination-controls class="text-center" (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Workdesign } from '../../../Models/Workdesign';
 import { Observable } from 'rxjs';
 import { Category } from '../../../Models/Category';
@@ -61,6 +61,29 @@ export class WorkdesignService {
 
   getWorkdesignsByStatusList(status: string){
     return this.http.get<Workdesign[]>(this.variable.urlApi + '/workdesignStatus' + `/${status}`);
+  }
+
+  getWorkdesignsBySearch(data){
+    console.log("se recibe en servicio data", data);
+
+    let params = new HttpParams();
+    if(data.dependency){
+      params = params.append("dependency",data.dependency);
+    }
+    if(data.title){
+      params = params.append("title",data.title);
+    }
+    if(data.publishedDate){
+      params = params.append("publishedDate",data.publishedDate);
+    }
+    if(data.status){
+      params = params.append("status",data.status);
+    }
+    if(data.uploadBy){
+      params = params.append("uploadBy",data.uploadBy);
+    }
+    console.log("se envia params", params);
+    return this.http.get<Workdesign[]>(this.variable.urlApi + '/workdesignSearch',{params: params});
   }
 
   postFile(foto, id:number){

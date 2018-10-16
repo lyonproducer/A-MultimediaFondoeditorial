@@ -3,6 +3,8 @@ import { UserService } from '../../../../services/admin/user/user.service';
 import { WorkdesignService } from '../../../../services/admin/workdesign/workdesign.service';
 import { Workdesign } from '../../../../Models/Workdesign';
 import { NgForm } from '@angular/forms';
+import { WorkdesignsAvancedSearchComponent } from '../workdesigns-avanced-search/workdesigns-avanced-search.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-workdesigns-search',
@@ -15,7 +17,8 @@ export class WorkdesignsSearchComponent implements OnInit {
 
   constructor(
     private userService:UserService,
-    private workdesignService:WorkdesignService
+    private workdesignService:WorkdesignService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -23,9 +26,7 @@ export class WorkdesignsSearchComponent implements OnInit {
   }
 
   getUsers(){
-
     this.userService.getUsers().subscribe(
-
       data => {
         //console.log(data);
         this.users = data;
@@ -79,6 +80,13 @@ export class WorkdesignsSearchComponent implements OnInit {
       console.log('status',this.workdesignService.workdesigns);
     });
     
+  }
+
+  openAvancedSearchDialog(): void {
+    const dialogRef = this.dialog.open(WorkdesignsAvancedSearchComponent, {
+      width: '50%',
+      //data: {id: this.route.snapshot.params.id, editar:false}
+    });
   }
 
   

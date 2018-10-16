@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Snotify, SnotifyService } from 'ng-snotify';
 import { MatDialog } from '@angular/material';
 import { WorkFormComponent } from './work-form/work-form.component';
+import { VariablesComponent } from '../../../../global/variables/variables.component';
 
 @Component({
   selector: 'app-workdesigns-view',
@@ -24,11 +25,13 @@ export class WorkdesignsViewComponent implements OnInit {
     private router: Router,
     private snotify: SnotifyService,
     public dialog: MatDialog,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private variables:VariablesComponent
   ) { }
 
   ngOnInit() {
     this.workdesign = this.workdesignService.selectedWorkdesign;
+    console.log(this.workdesignService.selectedWorkdesign.file);
     this.auth.authStatus.subscribe(value => this.loggedIn = value);
 
     console.log("el id del diseño es: ", this.route.snapshot.params.id);

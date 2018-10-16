@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ModalModule} from "ngx-modal";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatDialogModule, MatDialogRef} from '@angular/material';
+import {MatDialogModule, MatDialogRef, MatTooltipModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Services
@@ -37,6 +37,7 @@ import { WorkViewComponent } from './components/admin/workdesigns/workdesigns-vi
 import { VariablesComponent } from './global/variables/variables.component';
 import { WorkdesignsSearchComponent } from './components/admin/workdesigns/workdesigns-search/workdesigns-search.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import { WorkdesignsAvancedSearchComponent } from './components/admin/workdesigns/workdesigns-avanced-search/workdesigns-avanced-search.component';
 
 
 const routes: Route[] = [
@@ -62,7 +63,8 @@ const routes: Route[] = [
 @NgModule({
   entryComponents:[
     WorkFormComponent,
-    WorkViewComponent
+    WorkViewComponent,
+    WorkdesignsAvancedSearchComponent
   ],
   declarations: [
     AppComponent,
@@ -84,6 +86,7 @@ const routes: Route[] = [
     WorkViewComponent,
     WorkdesignsSearchComponent,
     DropdownDirective,
+    WorkdesignsAvancedSearchComponent,
     
   ],
   imports: [
@@ -95,7 +98,8 @@ const routes: Route[] = [
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    MatTooltipModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

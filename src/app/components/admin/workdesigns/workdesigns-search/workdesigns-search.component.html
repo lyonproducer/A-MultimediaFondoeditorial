@@ -25,20 +25,6 @@
         <li class="nav-item dropdown" appDropdown>
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Fechas
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-
-
-        <li class="nav-item dropdown" appDropdown>
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
             Dependencia
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -66,8 +52,12 @@
           </div>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-item nav-link" (click)="openAvancedSearchDialog()">Busqueda Avanzada</a>
+        </li>
 
       </ul>
+
       <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" class="form-inline my-2 my-lg-0">
 
         <input required class="form-control mr-sm-2" type="search" placeholder="Busca por titulo" 

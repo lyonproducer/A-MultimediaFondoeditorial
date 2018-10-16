@@ -1,3 +1,38 @@
-<p>
-  profile works!
-</p>
+<div class="container mt-5">
+
+  <h3 class="text-center">Bienvenido {{user.name}}</h3>
+  <hr>
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h5>Datos del Usuario</h5>
+
+    </div>
+
+    <div class="card-body">
+
+
+      <div class="row">
+
+        <div class="col">
+
+          <strong>Nombre</strong>
+          <p>{{user.name}}</p>
+        </div>
+
+        <div class="col">
+
+          <strong>Correo</strong>
+          <p>{{user.email}}</p>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
