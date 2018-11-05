@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ModalModule} from "ngx-modal";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -38,6 +38,7 @@ import { VariablesComponent } from './global/variables/variables.component';
 import { WorkdesignsSearchComponent } from './components/admin/workdesigns/workdesigns-search/workdesigns-search.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { WorkdesignsAvancedSearchComponent } from './components/admin/workdesigns/workdesigns-avanced-search/workdesigns-avanced-search.component';
+import { TokenInterceptor } from './security/token.interceptor';
 
 
 const routes: Route[] = [
@@ -106,7 +107,12 @@ const routes: Route[] = [
     {provide: MatDialogRef, useValue: {}},
     SnotifyService,
     Title,
-    VariablesComponent
+    VariablesComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

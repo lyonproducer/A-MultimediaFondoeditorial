@@ -49,5 +49,4 @@ export class WorkdesignsViewComponent implements OnInit {
     });
   }
 
-
 }
