@@ -35,14 +35,14 @@
               <div class="form-group">
                 <label for="exampleInputPasswordConfirm">Confirmar contraseña</label>
                 <input type="password" name="passwordConfirmation" class="form-control" id="exampleInputPasswordConfirm" placeholder="Confirmar contraseña" [(ngModel)]="form.password_confirmation" required>
-                <div class="alert alert-danger" [hidden]="!error.password_confirmation">
+                <div class="alert alert-danger" [hidden]="!error.password">
                     {{error.password}}
                 </div>
               </div>
   
               <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Registrarse</button>
   
-              <a routerLink="/login" class="btn btn-info float-right" >Sign In</a>
+              <a routerLink="/login" class="btn btn-info float-right">Iniciar Sesión</a>
   
               </form>
           </div>

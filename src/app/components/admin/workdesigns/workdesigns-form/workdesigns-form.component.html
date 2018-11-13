@@ -32,6 +32,7 @@
                   <select class="form-control"  id="exampleFormControlSelect1" 
                   (change)="asignCategoryID($event.target.value)" 
                   *ngIf="workdesignService.editar" [value]="workdesign.category.name">
+                    <option value="null" disabled selected>Selecciona una categoria</option>
                     <option *ngFor="let category of categoryService.categories">
                       {{category.name}}
                     </option>
@@ -39,6 +40,7 @@
                   <select class="form-control"  id="exampleFormControlSelect1" 
                   (change)="asignCategoryID($event.target.value)" 
                   *ngIf="!workdesignService.editar">
+                    <option value="null" disabled selected>Selecciona una categoria</option>
                     <option *ngFor="let category of categoryService.categories">
                       {{category.name}}
                     </option>
