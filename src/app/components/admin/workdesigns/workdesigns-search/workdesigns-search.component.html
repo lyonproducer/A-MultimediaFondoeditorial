@@ -16,9 +16,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a *ngFor="let user of users" class="dropdown-item" style="cursor:pointer;"
             (click)="refreshWorkdesignUsersList(user.id)">{{user.name}}</a>
-            
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+
           </div>
         </li>
 
@@ -32,8 +30,7 @@
             style="cursor:pointer;">Interno</a>
             <a class="dropdown-item" (click)="getWorkdesignsByDependencyList('Externo')" 
             style="cursor:pointer;">Externo</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+
           </div>
         </li>
 
@@ -47,8 +44,6 @@
             style="cursor:pointer;">En proceso</a>
             <a class="dropdown-item" (click)="getWorkdesignsByStatusList('Finalizado')"
             style="cursor:pointer;">Finalizado</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
 

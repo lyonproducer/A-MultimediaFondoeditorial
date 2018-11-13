@@ -14,7 +14,7 @@
       
     </div>
 
-    <div class="card mb-5" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 5, currentPage: p }">
+    <div class="card mb-5" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 3, currentPage: p }">
 
       <div class="card-header">
         <h4>{{workdesign.title}}</h4>

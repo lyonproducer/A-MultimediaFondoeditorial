@@ -3,8 +3,8 @@
       <div class="offset-md-3 col-md-6">
         <div class="card">
           <div class="card-header text-center">
-            <h5 *ngIf="!categoryService.editar">Añadir categoria</h5>
-            <h5 *ngIf="categoryService.editar">Editar categoria</h5>
+            <h5 *ngIf="!categoryService.editar">Añadir categoría</h5>
+            <h5 *ngIf="categoryService.editar">Editar categoría</h5>
           </div>
   
           <div class="card-body" style="padding:30px">
@@ -15,17 +15,17 @@
   
               <div class="form-group">
                 <label for="name">Nombre</label>
-                <input required [(ngModel)]="category.name" type="text" name="name" #name="ngModel" id="name" placeholder="Nombre de la categoria" class="form-control">
+                <input required [(ngModel)]="category.name" type="text" name="name" #name="ngModel" id="name" placeholder="Nombre de la categoría" class="form-control">
               </div>
                 
               <div class="form-group">
                 <label for="body">Descripción</label>
-                <textarea required [(ngModel)]="category.body" type="text" name="body" id="body" class="form-control" placeholder="Descripción de la categoria"></textarea>
+                <textarea required [(ngModel)]="category.body" type="text" name="body" id="body" class="form-control" placeholder="Descripción de la categoría"></textarea>
               </div>
                 
               <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!categoryForm.valid">
-                  Guardar categoria
+                  Guardar categoría
                 </button>
               </div>
             </form>
