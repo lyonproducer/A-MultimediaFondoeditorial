@@ -30,8 +30,8 @@ export class WorkdesignsAvancedSearchComponent implements OnInit {
     uploadBy: null,
   }
 
-  constructor(private userService:UserService,
-    private workdesignService:WorkdesignService,
+  constructor(public userService:UserService,
+    public workdesignService:WorkdesignService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<WorkdesignsAvancedSearchComponent>,
     private snotify:SnotifyService

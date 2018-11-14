@@ -88,6 +88,7 @@ const routes: Route[] = [
     WorkdesignsSearchComponent,
     DropdownDirective,
     WorkdesignsAvancedSearchComponent,
+    VariablesComponent
     
   ],
   imports: [

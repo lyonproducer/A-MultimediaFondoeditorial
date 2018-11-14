@@ -15,6 +15,8 @@ export class WorkdesignsSearchComponent implements OnInit {
 
   users:any[];
 
+  title:string;
+
   constructor(
     private userService:UserService,
     private workdesignService:WorkdesignService,
@@ -90,5 +92,4 @@ export class WorkdesignsSearchComponent implements OnInit {
   }
 
   
-
 }

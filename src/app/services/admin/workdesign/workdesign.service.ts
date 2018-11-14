@@ -10,7 +10,7 @@ import { VariablesComponent } from '../../../global/variables/variables.componen
 })
 export class WorkdesignService {
 
-  baseURL: string = 'http://127.0.0.1:8000/api/workdesigns';
+  baseURL: string = this.variable.urlApi + '/workdesigns';
 
   selectedWorkdesign : Workdesign;
   editar: boolean = false;

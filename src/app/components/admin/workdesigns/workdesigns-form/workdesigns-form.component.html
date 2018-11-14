@@ -55,6 +55,7 @@
                 <select required class="form-control"  id="exampleFormControlSelect1"
                   [value]="workdesign.dependency" [(ngModel)]="workdesign.dependency"
                   name="dependency" #name="ngModel" placeholder="Dependencia del diseño">
+                    <option value="null" disabled selected>Selecciona dependencia</option>
                     <option>Interno</option>
                     <option>Externo</option>
                   </select>

@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material';
 })
 export class WorksListComponent implements OnInit {
 
+  p: number = 1;
   open: boolean=false;
   works:Work[];
   idWorkdesign:number;

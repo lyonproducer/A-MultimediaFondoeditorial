@@ -10,7 +10,9 @@ import { SnotifyService } from 'ng-snotify';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private categoryService:CategoryService, private notify: SnotifyService) { }
+  p: number = 1;
+
+  constructor(public categoryService:CategoryService, private notify: SnotifyService) { }
 
   ngOnInit() {
     this.refreshCategoryList();

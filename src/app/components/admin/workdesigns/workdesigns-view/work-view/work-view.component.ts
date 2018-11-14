@@ -13,9 +13,9 @@ export class WorkViewComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<WorkViewComponent>,
-    private workService:WorkService,
+    public workService:WorkService,
     private notify:SnotifyService,
-    private variable:VariablesComponent,
+    public variable:VariablesComponent,
     @Inject(MAT_DIALOG_DATA) public work: any) { }
 
   ngOnInit() {

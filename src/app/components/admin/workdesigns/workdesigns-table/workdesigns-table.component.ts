@@ -12,9 +12,11 @@ import { Category } from '../../../../Models/Category';
 })
 export class WorkdesignsTableComponent implements OnInit {
 
-  constructor(private workdesignService:WorkdesignService,
-              private categoryService:CategoryService,
-              private notify: SnotifyService) { }
+  p: number = 1;
+
+  constructor(public workdesignService:WorkdesignService,
+    public categoryService:CategoryService,
+    public notify: SnotifyService) { }
 
   ngOnInit() {
     this.refreshWorkdesignList();

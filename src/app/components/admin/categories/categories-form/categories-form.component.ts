@@ -18,7 +18,7 @@ export class CategoriesFormComponent implements OnInit {
     body:null
   };
 
-  constructor(private categoryService: CategoryService,
+  constructor(public categoryService: CategoryService,
     private notify: SnotifyService,
     private router: Router) { }
 

@@ -15,7 +15,7 @@ import { VariablesComponent } from '../../../../global/variables/variables.compo
 })
 export class WorkdesignsViewComponent implements OnInit {
 
-  workdesign: Workdesign;
+  workdesign: any;
 
   public loggedIn: boolean;
 

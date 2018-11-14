@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 })
 export class WorkdesignListComponent implements OnInit {
 
+  p: number = 1;
   categories : Category[]
-  constructor(private workdesignService: WorkdesignService,
-              private categoryService:CategoryService,
+
+  constructor(public workdesignService: WorkdesignService,
+              public categoryService:CategoryService,
               private router:Router) { }
 
   ngOnInit() {

@@ -34,9 +34,9 @@ export class WorkdesignsFormComponent implements OnInit {
     uploadBy: null,
   }
 
-  constructor(private workdesignService:WorkdesignService, 
-              private categoryService:CategoryService,
-              private userService:UserService,
+  constructor(public workdesignService:WorkdesignService, 
+    public categoryService:CategoryService,
+    public userService:UserService,
               private router: Router,
               private notify: SnotifyService,
               private http:HttpClient) { }
