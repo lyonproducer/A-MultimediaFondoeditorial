@@ -38,10 +38,13 @@ export class TokenService {
     let token = this.get();
 
     if(token){
+      return true;
+      /*
       const payload = this.payload(token);
       if(payload){
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
       }
+      */
     }
 
     return false;
