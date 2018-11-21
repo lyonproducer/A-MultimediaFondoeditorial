@@ -21,7 +21,7 @@
       </div>
       <div class="card-body">
 
-        <img src="{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img">
+        <img src="{{variable.urlBase}}/public/{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img">
         <hr>
         <strong>Descripción</strong>
         {{workdesign.excerpt}}

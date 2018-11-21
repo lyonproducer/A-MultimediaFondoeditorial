@@ -26,7 +26,7 @@ export class WorkdesignsViewComponent implements OnInit {
     private snotify: SnotifyService,
     public dialog: MatDialog,
     private route:ActivatedRoute,
-    private variables:VariablesComponent
+    private variable:VariablesComponent
   ) { }
 
   ngOnInit() {

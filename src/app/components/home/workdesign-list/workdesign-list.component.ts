@@ -4,6 +4,7 @@ import { Workdesign } from '../../../Models/Workdesign';
 import { CategoryService } from '../../../services/admin/category/category.service';
 import { Category } from '../../../Models/Category';
 import { Router } from '@angular/router';
+import { VariablesComponent } from 'src/app/global/variables/variables.component';
 
 @Component({
   selector: 'app-workdesign-list',
@@ -17,7 +18,8 @@ export class WorkdesignListComponent implements OnInit {
 
   constructor(public workdesignService: WorkdesignService,
               public categoryService:CategoryService,
-              private router:Router) { }
+              private router:Router,
+              public variable:VariablesComponent) { }
 
   ngOnInit() {
     this.refreshWorkdesignList();
