@@ -6,6 +6,7 @@ import { Category } from '../../../Models/Category';
 import { Router } from '@angular/router';
 import { Token } from '@angular/compiler';
 import { AuthService } from '../../../services/auth.service';
+import { VariablesComponent } from 'src/app/global/variables/variables.component';
 
 @Component({
   selector: 'app-workdesign-list',
@@ -23,8 +24,10 @@ export class WorkdesignListComponent implements OnInit {
               public categoryService:CategoryService,
               private router:Router,
               public token:Token,
-              private auth: AuthService
+              public auth: AuthService,
+              public variable:VariablesComponent
             ) { }
+              
 
   ngOnInit() {
     this.auth.authStatus.subscribe(value => this.loggedIn = value);
