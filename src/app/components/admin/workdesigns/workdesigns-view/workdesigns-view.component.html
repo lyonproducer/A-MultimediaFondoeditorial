@@ -4,7 +4,9 @@
 
     <div class="card border-secondary mb-4">
 
-      <img src="{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img-top">
+      <!--<img src="{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img-top">-->
+      <img src="{{variable.urlBase}}/public/{{workdesign.file}}" *ngIf="workdesign.file" class="img-fluid card-img-top">
+      
 
       <div class="card-body">
 
@@ -35,7 +37,7 @@
 
         <a style="cursor:pointer;text-decoration: underline black;">{{workdesign.category.name}}</a>
 
-        <a href="{{workdesign.file}}" class="btn btn-success float-right text-white">Descarga</a>
+        <a href="{{variable.urlApi}}/workdesignDownload/{{workdesign.id}}" class="btn btn-success float-right text-white">Descarga</a>
       </div>
     </div>
 
