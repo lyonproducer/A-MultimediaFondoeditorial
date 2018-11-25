@@ -38,7 +38,7 @@ export class WorkdesignsViewComponent implements OnInit {
 
     if (this.workdesign == undefined) {
       this.router.navigateByUrl('/workdesigns');
-      this.snotify.info("Seleccione un diseño de la lista", { timeout: 0 });
+      this.snotify.info("Seleccione un diseño de la lista");
     }
   }
 

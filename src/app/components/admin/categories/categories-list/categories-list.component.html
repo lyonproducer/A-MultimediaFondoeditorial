@@ -16,8 +16,8 @@
     </thead>
     <tbody>
 
-      <tr class="" *ngFor="let category of categoryService.categories | paginate: { itemsPerPage: 10, currentPage: p }">
-        <th scope="row">{{category.id}}</th>
+      <tr class="" *ngFor="let category of categoryService.categories | paginate: { itemsPerPage: 10, currentPage: p }; index as i;">
+        <th scope="row">{{i}}</th>
         <th scope="row">
           {{category.name}}
           <a class="btn btn-danger text-white float-right ml-3" (click)="onDelete(category.id)" >

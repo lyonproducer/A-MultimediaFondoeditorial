@@ -16,7 +16,6 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a *ngFor="let user of users" class="dropdown-item" style="cursor:pointer;"
             (click)="refreshWorkdesignUsersList(user.id)">{{user.name}}</a>
-
           </div>
         </li>
 
@@ -53,6 +52,9 @@
 
       </ul>
 
+      <button class="btn btn-light mr-2" (click)="refreshWorkdesignList()"
+      title="Mostrar todos los diseños">Mostrar todos</button>
+
       <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" class="form-inline my-2 my-lg-0">
 
         <input required class="form-control mr-sm-2" type="search" placeholder="Busca por titulo" 
@@ -60,6 +62,7 @@
         
         <button [disabled]="!searchForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
       </form>
+
     </div>
 
   </div>

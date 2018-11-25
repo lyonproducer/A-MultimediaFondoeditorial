@@ -53,7 +53,7 @@ export class WorkdesignsAvancedSearchComponent implements OnInit {
   onSubmit(form : NgForm){
     if(form.value.dependency == null && form.value.title==null && form.value.status == null 
       && form.value.publishedDate==null && form.value.uploadBy==null ){
-      this.snotify.error("Ingresa un elemento en la busqueda", {timeout:0});
+      this.snotify.error("Ingresa un elemento en la busqueda");
     }else{
       this.getWorkdesignsBySearch(form.value);
     }

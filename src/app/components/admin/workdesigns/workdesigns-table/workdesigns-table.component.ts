@@ -14,6 +14,8 @@ export class WorkdesignsTableComponent implements OnInit {
 
   p: number = 1;
 
+  index:number =1;
+
   constructor(public workdesignService:WorkdesignService,
     public categoryService:CategoryService,
     public notify: SnotifyService) { }

@@ -20,21 +20,22 @@
     </thead>
     <tbody>
 
-      <tr class="" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 10, currentPage: p }">
-        <th scope="row">{{workdesign.id}}</th>
+      <tr class="" *ngFor="let workdesign of workdesignService.workdesigns | paginate: { itemsPerPage: 10, currentPage: p }; index as i;">
+        <th scope="row">{{i}}</th>
         <th scope="row">{{workdesign.title}}</th>
         <td scope="row">{{workdesign.status}}</td>
         <td>
           {{workdesign.publishedDate}}
-          <a class="btn btn-danger text-white float-right ml-3" (click)="onDelete(workdesign.id)" >
-              <i class="far fa-trash-alt"></i>
+          <a class="btn btn-danger text-white float-right ml-3" (click)="onDelete(workdesign.id)" 
+          title="Borrar diseño">
+            <i class="far fa-trash-alt"></i>
           </a>
 
-          <a class="btn btn-secondary text-white float-right ml-3" routerLink="/workdesigns/create" (click)="onEdit(workdesign)" >
+          <a class="btn btn-secondary text-white float-right ml-3" routerLink="/workdesigns/create" (click)="onEdit(workdesign)"  title="Editar diseño">
             <i class="far fa-edit"></i>
           </a>
 
-          <a class="btn btn-secondary text-white float-right ml-3" routerLink="/workdesigns/view/{{workdesign.id}}/{{workdesign.title}}" (click)="onView(workdesign)" >
+          <a class="btn btn-secondary text-white float-right ml-3" routerLink="/workdesigns/view/{{workdesign.id}}/{{workdesign.title}}" (click)="onView(workdesign)" title="Ver diseño">
             <i class="fa fa-eye" aria-hidden="true"></i>
           </a>
 

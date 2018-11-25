@@ -5,6 +5,7 @@ import { Workdesign } from '../../../../Models/Workdesign';
 import { NgForm } from '@angular/forms';
 import { WorkdesignsAvancedSearchComponent } from '../workdesigns-avanced-search/workdesigns-avanced-search.component';
 import { MatDialog } from '@angular/material';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-workdesigns-search',
@@ -21,6 +22,7 @@ export class WorkdesignsSearchComponent implements OnInit {
     private userService:UserService,
     private workdesignService:WorkdesignService,
     public dialog: MatDialog,
+    public snotify:SnotifyService
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,12 @@ export class WorkdesignsSearchComponent implements OnInit {
 
   onSubmit(form:NgForm){
     console.log("busqueda de title", form.value);
+
+    if(form.value.title== '' || form.value.title == null){
+      this.snotify.error('Inserte un valor en la barra');
+      return
+    }
+
     this.getWorkdesignsByTitleList(form.value.title);
   }
 
@@ -54,8 +62,9 @@ export class WorkdesignsSearchComponent implements OnInit {
       if(res.length){
         this.workdesignService.workdesigns = res as Workdesign[];
       }else
-      this.workdesignService.workdesigns = null;
-      console.log('por titulo',this.workdesignService.workdesigns);
+      this.snotify.error('No se encontró ningun resultado');
+      //this.workdesignService.workdesigns = null;
+      //console.log('por titulo',this.workdesignService.workdesigns);
     });
     
   }
@@ -91,5 +100,10 @@ export class WorkdesignsSearchComponent implements OnInit {
     });
   }
 
+  refreshWorkdesignList() {
+    this.workdesignService.getWorkdesignsList().subscribe((res) => {
+      this.workdesignService.workdesigns = res as Workdesign[];
+    });
+  }
   
 }
