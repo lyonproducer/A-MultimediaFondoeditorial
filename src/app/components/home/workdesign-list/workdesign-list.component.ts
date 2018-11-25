@@ -23,7 +23,6 @@ export class WorkdesignListComponent implements OnInit {
   constructor(public workdesignService: WorkdesignService,
               public categoryService:CategoryService,
               private router:Router,
-              public token:Token,
               public auth: AuthService,
               public variable:VariablesComponent
             ) { }

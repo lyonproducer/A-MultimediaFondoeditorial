@@ -17,7 +17,7 @@ export class VariablesComponent implements OnInit {
   
 
   //urlBase:string = 'http://127.0.0.1:8000';
-  //urlBase:string = 'back';
+  urlBase:string = 'back';
   //urlBase:string = 'http://172.20.70.28/pasantia/multimedia/back';
 
 

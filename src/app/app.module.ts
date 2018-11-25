@@ -10,6 +10,7 @@ import {ModalModule} from "ngx-modal";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule, MatDialogRef, MatTooltipModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule } from '@angular/http';
 
 //Services
 import { BeforeLoginService } from './services/before-login.service';
