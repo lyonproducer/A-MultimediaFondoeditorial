@@ -29,7 +29,7 @@
       </div>
       <div class="card-footer">
 
-        <a routerLink="/workdesigns/view/{{workdesign.id}}/{{workdesign.title}}" (click)="onView(workdesign)" class="btn btn-primary float-right"
+        <a routerLink="/workdesigns/view/{{workdesign.id}}/{{workdesign.title}}" (click)="onView(workdesign)" class="btn btn-primary float-right" *ngIf="loggedIn"
           role="button">Ver Más</a>
 
         <strong>Fecha de publicación:</strong>

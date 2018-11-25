@@ -4,6 +4,8 @@ import { Workdesign } from '../../../Models/Workdesign';
 import { CategoryService } from '../../../services/admin/category/category.service';
 import { Category } from '../../../Models/Category';
 import { Router } from '@angular/router';
+import { Token } from '@angular/compiler';
+import { AuthService } from '../../../services/auth.service';
 import { VariablesComponent } from 'src/app/global/variables/variables.component';
 
 @Component({
@@ -16,12 +18,19 @@ export class WorkdesignListComponent implements OnInit {
   p: number = 1;
   categories : Category[]
 
+  public loggedIn : boolean;
+
   constructor(public workdesignService: WorkdesignService,
               public categoryService:CategoryService,
               private router:Router,
-              public variable:VariablesComponent) { }
+              public token:Token,
+              public auth: AuthService,
+              public variable:VariablesComponent
+            ) { }
+              
 
   ngOnInit() {
+    this.auth.authStatus.subscribe(value => this.loggedIn = value);
     this.refreshWorkdesignList();
     
   }
